@@ -1,0 +1,13 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+Web Services EC2 instance in a public subnet so it can communicate with any endpoint on the internet. It must be on a private subnet, allowing communication on port 5000 only from the Application Load Balancer.
+
+# Poor practice 2
+IAM Permissions for EC2 Instances, InstanceRole has full access to any s3 bucket instance 
+- allowing all actions (s3:*) 
+- all S3 resources (Resource: '*'). 
+A violation of the least privilege principle for InstanceRole aws s3 would be granting the role more permissions than it needs to perform its tasks. 
+For example, if the role only needs to read from a specific S3 bucket, but it is granted full access to all S3 buckets, that would be a violation of the least privilege principle.
+This could expose the role to unnecessary risks, such as data loss, data leakage, or unauthorized access.
+It should limit the permissions of the role to the minimum required for its function.
