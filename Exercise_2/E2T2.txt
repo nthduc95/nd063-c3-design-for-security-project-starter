@@ -1,0 +1,20 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+ 
+1. IAM policy is not following the principle of least privilege, IAM policies allow full "*" administrative privileges. 
+2. The root user not enable MFA.
+3. CloudTrail Trail is not specified, and configured for multi-region.
+4. Application Load balancer does not have configured to redirect HTTP request to HTTPS.
+5. VPC Security Groups allow all allow inbound and outbound traffic which violates the AWS recommendation.
+6. TCP port 5000 is reachable from the internet on the EC2 instance.
+7. S3 bucket logging is disabled.
+
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+1. IAM policies should not allow full "*" administrative privileges, review IAM policies and remove any unnecessary or overly broad permissions, limit the permissions of the role to the minimum required for its function. 
+2. The root user has full access to all the resources and services in AWS account. It is strongly recommended enable multi-factor authentication (MFA) for the root user to add an extra layer of security to account.
+3. Create a CloudTrail that is stored on S3 and enable the multi-region option.
+4. Configure Application Load Balancer to redirect HTTP requests to HTTPS. HTTPS uses TLS (SSL) to encrypt the HTTP requests and responses, preventing eavesdropping and tampering.
+5. The VPC default security group should not allow inbound and outbound traffic. Allow only the necessary traffic for resources. It should avoid using 0.0.0.0/0 or ::/0 as the source or destination for rules, as this allows all IPv4 or IPv6 addresses to access resources.
+6. Disable all other non-necessary ports on the EC2 instance, should also use secure protocols, such as HTTPS (port 443) or SSH (port 22), and encrypt your traffic with SSL certificates or SSH keys.
+7. S3 bucket logging should be enabled. Logging can help troubleshoot operational or security issues, analyze customer behavior, and understand Amazon S3 bill.
