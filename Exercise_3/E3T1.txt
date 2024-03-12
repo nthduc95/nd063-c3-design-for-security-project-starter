@@ -1,0 +1,9 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+GuardDuty may have detected this attack by using one or more of the following sources of information:
+- AWS CloudTrail event logs, which record the API calls and events that occur in your AWS account. GuardDuty can use these logs to detect unauthorized or unusual actions, such as creating or deleting resources, modifying permissions, or accessing sensitive data.
+- VPC flow logs, which capture the network traffic that flows through your VPC. GuardDuty can use these logs to detect suspicious or malicious connections, such as communication with known malicious IP addresses or domains, port scanning, or data exfiltration.
+- DNS logs, which record the DNS queries and responses that occur in your VPC.  GuardDuty can use these logs to detect domain generation algorithms, which are techniques used by malware to generate random and changing domain names for command and control servers.
+
+

@@ -1,0 +1,11 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- Enforce MFA for SSH access. This adds an additional layer of security beyond just the password/SSH key.
+- Modify security groups to allow SSH access only from known, trusted IP addresses or networks.
+- Allow SSH only for users with specific roles or using AWS Systems Manager Session Manager for secure remote access to instances.
+
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+To prevent access to sensitive data in AWS, even if instance API credentials are compromised, you can implement the following measures:
+- Use IAM Roles for EC2 Instances: Instead of storing API credentials on instances, use IAM roles.IAM roles provide temporary credentials that are automatically rotated and are more secure.
+- Enable Encryption: Encrypt the S3 bucket containing sensitive data using AWS Key Management Service (KMS).This ensures that even if credentials are compromised, the data cannot be accessed without the decryption keys.
+- Implement Least Privilege Access: Apply fine-grained permissions to control which operations can be performed by the IAM role associated with the EC2 instance.This limits the actions that can be taken if credentials are compromised.

@@ -1,0 +1,23 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+- Terraform Security Scanning Tools.
+- Checkov.
+### Example vulnerability
+- Misconfigured network access controls
+- Access logs not enabled to resources that support it
+
+##Scan AMI’s or containers for OS vulnerabilities
+- Amazon Inspector
+- Clair
+### Example vulnerability
+- Outdated Software Packages
+- Weak or Default Passwords
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+- AWS configuration
+- Prowler
+
+### Example vulnerability
+- Overly Permissive IAM Policies
+- An IAM role assigned a policy that allows admin access

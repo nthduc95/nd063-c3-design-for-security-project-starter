@@ -1,0 +1,16 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+To reduce the internet-facing attack surface of your web application instance in AWS, consider implementing the following architectural changes:
+1. Use a Web Application Firewall (WAF): Deploy AWS WAF to protect your web applications from common web exploits that could affect availability, compromise security, or consume excessive resources.
+2. Implement Amazon CloudFront: Use CloudFront as a content delivery network (CDN) to cache content at edge locations closer to your users.This not only improves performance but also helps protect your origin server from direct exposure to the internet.
+3. Private Subnets for EC2 Instances: Place your EC2 instances in private subnets within a Virtual Private Cloud (VPC) and use NAT gateways for internet access.This ensures that your instances are not directly reachable from the internet.
+4. Segregate Networks: Create different network segments for various parts of your application (e.g., web layer, application layer, database layer) to limit exposure and potential lateral movement in case of a breach.
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+Creating VPC private endpoints for S3 can indeed help in preventing unauthorized access to S3 buckets.
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+No , applying default encryption settings to S3 buckets will not encrypt data that already exists in the bucket
+# What would happen if the original cloud formation templates are applied to this environment.
+If the resources defined in the templates are unchanged, reapplying the templates should have no impact on those resources. 
+For resources that have been changed outside of CloudFormation, applying the original templates may update them back to their original state or replace them if the changes cannot be updated.
